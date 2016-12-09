@@ -37,9 +37,12 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "headless": true,
       "boot_wait": "2m",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
-      "ssh_wait_timeout": "6h",
+      "communicator": "winrm",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
+      "winrm_use_ssl": false,
+      "winrm_insecure": true,
+      "winrm_timeout": "6h",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
       "guest_os_type": "Windows2012_64",
       "disk_size": 61440,
@@ -47,7 +50,6 @@
         "{{user `autounattend`}}",
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1",
-        "./scripts/openssh.ps1",
         "./scripts/oracle-cert.cer"
       ],
       "vboxmanage": [
